@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,14 +15,15 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('layout.app');
+    return view('dashboard.index');
 });
-Route::get('/category', function () {
-    return view('category.list');
+
+Route::get('/category', [CategoryController::class, 'index']);
+Route::get('/category/add',function (){
+    return view("category.add");
 });
-Route::get('/product', function () {
-    return view('product.list');
-});
-Route::get('/customer', function () {
-    return view('customer.list');
+
+
+Route::get('/product',function (){
+    return view("product.list");
 });

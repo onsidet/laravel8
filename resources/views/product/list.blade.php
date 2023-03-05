@@ -1,3 +1,8 @@
+@extends("layout.app")
+@section('product','active')
+@section('content_title') {{'Products'}} @stop
+
+@section('content')
 <div class="table-responsive">
     <table class="table table-striped table-sm">
         <thead>
@@ -125,4 +130,5 @@
         </tbody>
     </table>
 </div>
+@stop
 
