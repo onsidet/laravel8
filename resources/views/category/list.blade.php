@@ -2,7 +2,7 @@
 @section('content_title','Category')
 @section('title','Category')
 @section('category') {{'active'}} @stop
-@section('button-add') <a href="{{url('/category/add')}}" class="btn btn-primary">Add</a> @stop
+@section('button-add') <a href="{{ route('category.create') }}" class="btn btn-primary">Add</a> @stop
 
 @section('content')
 <div class="table-responsive">

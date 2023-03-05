@@ -4,7 +4,8 @@
 @section('category') {{'active'}} @stop
 
 @section('content')
-<form>
+<form method="POST" action="{{route("category.store")}}">
+    {{ csrf_field() }}
     <div class="mb-3">
         <label for="name" class="form-label">Name</label>
         <input type="text" id="name" name="name" class="form-control" placeholder="Name">
@@ -12,8 +13,8 @@
     <div class="mb-3">
         <label for="status" class="form-label">Status</label>
         <select id="status" name="status" class="form-select">
-            <option>Active</option>
-            <option>Disable</option>
+            <option value="1">Active</option>
+            <option value="0">Disable</option>
         </select>
     </div>
     <button type="submit" class="btn btn-primary">Save</button>

@@ -19,10 +19,8 @@ Route::get('/', function () {
 });
 
 Route::get('/category', [CategoryController::class, 'index']);
-Route::get('/category/add',function (){
-    return view("category.add");
-});
-
+Route::get('/category/add',[CategoryController::class, 'create'])->name("category.create");
+Route::post('/category/add',[CategoryController::class,'store']) ->name("category.store");
 
 Route::get('/product',function (){
     return view("product.list");
