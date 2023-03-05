@@ -4,6 +4,13 @@
 @section('category') {{'active'}} @stop
 
 @section('content')
+    @if ($errors->any())
+        <ul class="alert alert-danger">
+            @foreach($errors->all() as $error)
+                <li>{{$error}}</li>
+            @endforeach
+        </ul>
+    @endif
 <form method="POST" action="{{route("category.store")}}">
     {{ csrf_field() }}
     <div class="mb-3">
@@ -18,6 +25,6 @@
         </select>
     </div>
     <button type="submit" class="btn btn-primary">Save</button>
-    <button {{ url('/category') }} type="button" class="btn btn-secondary">Cancel</button>
+    <a href="{{ route('category') }}" class="btn btn-secondary">Cancel</a>
 </form>
 @endsection

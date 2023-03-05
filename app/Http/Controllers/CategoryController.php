@@ -17,7 +17,7 @@ class CategoryController extends Controller
     {
         $categories = Category::all();
 //        dd($categories);
-        return view('category.list',compact('categories'));
+        return view('category.list',compact('categories',));
     }
 
     /**
@@ -63,9 +63,11 @@ class CategoryController extends Controller
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function edit(Category $category)
+    public function edit($id)
     {
-        //
+        $category = Category::find($id);
+        //return dd($category);
+        return view('category.edit',compact('category'));
     }
 
     /**
@@ -75,9 +77,14 @@ class CategoryController extends Controller
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Category $category)
+    public function update(Request $request, $id)
     {
-        //
+        $this->validate($request,[
+            'name' => 'required'
+        ]);
+        $category = Category::find($id);
+        $category->update($request->all());
+        return redirect()->route('category');
     }
 
     /**
@@ -86,8 +93,10 @@ class CategoryController extends Controller
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Category $category)
+    public function destroy($id)
     {
-        //
+        $category = Category::find($id);
+        $category->delete();
+        return redirect()->route("category");
     }
 }
